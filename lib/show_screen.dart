@@ -38,14 +38,14 @@ class _ShowScreenState extends State<ShowScreen> {
   void updateUI(dynamic weatherData) {
     setState(() {
       if (weatherData == null) {
-        t = 0.0;
-        td = 0.0;
-        h = 0.0;
-        qnh = 0.0;
-        qfe = 0.0;
-        qfeIn = 0.0;
-        v = 0.0;
-        b = 0;
+        t = '0.0';
+        td = '0.0';
+        h = '0.0';
+        qnh = '0.0';
+        qfe = '0.0';
+        qfeIn = '0.0';
+        v = '0.0';
+        b = '0.0';
         return;
       }
       double tBuff = weatherData['Sensor']['t'];
@@ -62,7 +62,7 @@ class _ShowScreenState extends State<ShowScreen> {
       qfeIn = qfeInBuff.toString();
       double vBuff = weatherData['Sensor']['B_V'];
       v = vBuff.toString();
-      int bBuff = weatherData['Sensor']['B_L'];
+      int bBuff = weatherData['Sensor']['B_L'].truncate();
       b = bBuff.toString();
 
       // if (windData == null) {
