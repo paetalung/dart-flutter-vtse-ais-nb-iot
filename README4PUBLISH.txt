@@ -24,3 +24,12 @@ https://flutter.dev/docs/deployment/android
 
 5. Here is APK File
 <APP FOLDER>\build\app\outputs\apk\release
+
+
+
+-------------
+const MagellanURL =
+    'https://magellan.ais.co.th/pullmessageapis/api/listen/thing/72B247A1EC3563F41338715A37BA4321';
+const OpenWeatherMapURL =
+    'https://api.openweathermap.org/data/2.5/weather?lat=10.715056&lon=99.359889&appid=e1b02b6dacf04857637967f73c961101';
+

@@ -4,7 +4,8 @@ import 'networking.dart';
 import 'show_screen.dart';
 
 const MagellanURL = '';
-const OpenWeatherMapURL = '';
+// const OpenWeatherMapURL =
+//     '';
 
 class LoadingScreen extends StatefulWidget {
   @override

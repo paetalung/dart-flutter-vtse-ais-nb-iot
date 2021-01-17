@@ -48,21 +48,37 @@ class _ShowScreenState extends State<ShowScreen> {
         b = '0.0';
         return;
       }
-      double tBuff = weatherData['Sensor']['t'];
+      double tBuff = weatherData['Sensor']['t'] is int
+          ? (weatherData['Sensor']['t'] as int).toDouble()
+          : weatherData['Sensor']['t'];
       t = tBuff.toString();
-      double tdBuff = weatherData['Sensor']['dp'];
+      double tdBuff = weatherData['Sensor']['dp'] is int
+          ? (weatherData['Sensor']['dp'] as int).toDouble()
+          : weatherData['Sensor']['dp'];
       td = tdBuff.toString();
-      double hBuff = weatherData['Sensor']['h'];
+      double hBuff = weatherData['Sensor']['h'] is int
+          ? (weatherData['Sensor']['h'] as int).toDouble()
+          : weatherData['Sensor']['h'];
       h = hBuff.toString();
-      double qnhBuff = weatherData['Sensor']['QNH'];
+      double qnhBuff = weatherData['Sensor']['QNH'] is int
+          ? (weatherData['Sensor']['QNH'] as int).toDouble()
+          : weatherData['Sensor']['QNH'];
       qnh = qnhBuff.toString();
-      double qfeBuff = weatherData['Sensor']['QFE'];
+      double qfeBuff = weatherData['Sensor']['QFE'] is int
+          ? (weatherData['Sensor']['QFE'] as int).toDouble()
+          : weatherData['Sensor']['QFE'];
       qfe = qfeBuff.toString();
-      double qfeInBuff = weatherData['Sensor']['QFE_in'];
+      double qfeInBuff = weatherData['Sensor']['QFE_in'] is int
+          ? (weatherData['Sensor']['QFE_in'] as int).toDouble()
+          : weatherData['Sensor']['QFE_in'];
       qfeIn = qfeInBuff.toString();
-      double vBuff = weatherData['Sensor']['B_V'];
+      double vBuff = weatherData['Sensor']['B_V'] is int
+          ? (weatherData['Sensor']['B_V'] as int).toDouble()
+          : weatherData['Sensor']['B_V'];
       v = vBuff.toString();
-      int bBuff = weatherData['Sensor']['B_L'].truncate();
+      double bBuff = weatherData['Sensor']['B_L'] is int
+          ? (weatherData['Sensor']['B_L'] as int).toDouble()
+          : weatherData['Sensor']['B_L'];
       b = bBuff.toString();
 
       // if (windData == null) {
