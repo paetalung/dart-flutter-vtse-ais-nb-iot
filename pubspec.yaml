@@ -4,15 +4,15 @@ description: PresentWeatherAtVTSE
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 2.0.1
+version: 2.0.2
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  cupertino_icons: ^0.1.2
+  cupertino_icons: ^1.0.3
   http: ^0.12.0+2
-  flutter_spinkit: ^3.1.0
+  flutter_spinkit: ^5.1.0
   requests: ^3.3.0
 
 

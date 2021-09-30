@@ -9,13 +9,17 @@ D:\AppDev-Flutter\03-app\vtse_obs\android\app\Users\key
 https://flutter.dev/docs/deployment/android
 
 4. in File "build.gradle" in Flutter Project 
-   We have to increase these 2 Variable for
+   We have to **increase these 2 Variable** for
    Update new Version of our APP
 
    versionCode 3
    versionName '1.0.2'
 
-   
+4.1 in File "pubspec.yaml"in Flutter Project 
+   We have to **increase this Variable** for
+   Update new Version of our APP
+
+   version: 1.0.1+2
 
 
 4. To buile APK file
@@ -25,6 +29,14 @@ https://flutter.dev/docs/deployment/android
 5. Here is APK File
 <APP FOLDER>\build\app\outputs\apk\release
 
+6. Git
+
+
+
+
+
+
+
 
 
 -------------
@@ -33,3 +45,12 @@ const MagellanURL =
 const OpenWeatherMapURL =
     'https://api.openweathermap.org/data/2.5/weather?lat=10.715056&lon=99.359889&appid=e1b02b6dacf04857637967f73c961101';
 
+-------------
+
+Flutter does not support android studio 4.1
+HERE IS  OUR IT WORKS FOR ME
+The problem is with the 1.22 stable version I guess
+
+step1 : run> flutter channel dev
+step2  : run> flutter channel upgrade
+step3 : run > flutter config --android-studio-dir="C:\Program Files\Android\Android Studio"
