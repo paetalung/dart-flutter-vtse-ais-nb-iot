@@ -1,11 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'networking.dart';
 import 'show_screen.dart';
 
-const MagellanURL = '';
-// const OpenWeatherMapURL =
-//     '';
+const MagellanURL = 'xxxx';
+// debug
+const OpenWeatherMapURL = 'xxxx';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -19,29 +21,20 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     getWeather();
-    //getWind();
   }
 
   void getWeather() async {
     NetworkHelper networkHelper = NetworkHelper(MagellanURL);
     var weatherData = await networkHelper.getData();
+    //print(weatherData);
+    NetworkHelper networkHelper2 = NetworkHelper(OpenWeatherMapURL);
+    var windData = await networkHelper2.getData();
+    //print(windData);
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return ShowScreen(
-        showWeather: weatherData,
-      );
+      return ShowScreen(showWeather: weatherData, showWind: windData);
     }));
   }
-
-  // void getWind() async {
-  //   NetworkHelper networkHelper = NetworkHelper(OpenWeatherMapURL);
-  //   var windData = await networkHelper.getData();
-  //   Navigator.push(context, MaterialPageRoute(builder: (context) {
-  //     return ShowScreen(
-  //       showWind: windData,
-  //     );
-  //   }));
-  // }
 
   @override
   Widget build(BuildContext context) {

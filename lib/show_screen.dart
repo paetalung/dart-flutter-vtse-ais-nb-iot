@@ -21,22 +21,25 @@ class _ShowScreenState extends State<ShowScreen> {
   var v;
   var b;
 
-  // // Show Weather Section Variable
-  // var ws;
-  // var wd;
-  // var pw;
-  // var vis;
-  // var cl;
+  // debug
+  // Show Weather Section Variable
+  var ws;
+  var wd;
+  var pw;
+  var vis;
+  var cl;
 
   @override
   void initState() {
     super.initState();
 
-    updateUI(widget.showWeather);
+    updateUI(widget.showWeather, widget.showWind);
   }
 
-  void updateUI(dynamic weatherData) {
+  void updateUI(dynamic weatherData, dynamic windData) {
     setState(() {
+      // debug
+      //print(weatherData);
       if (weatherData == null) {
         t = '0.0';
         td = '0.0';
@@ -81,23 +84,32 @@ class _ShowScreenState extends State<ShowScreen> {
           : weatherData['Sensor']['B_L'];
       b = bBuff.toString();
 
-      // if (windData == null) {
-      //   ws = 0.0;
-      //   wd = '-';
-      //   pw = 'nsw';
-      //   vis = 0.0;
-      //   cl = 0.0;
-      //   return;
-      // }
-      // double wsBuff = windData['wind']['speed'];
-      // ws = wsBuff.toString();
-      // //double wdBuff = windData['wind']['deg'];
-      // wd = windData['wind']['deg'];
-      // pw = windData['weather'][0]['description'];
-      // int visBuff = windData['visibility'];
-      // vis = visBuff.toString();
-      // int clBuff = windData['clouds']['all'];
-      // cl = clBuff.toString();
+      // debug
+      //print(windData);
+      if (windData == null) {
+        ws = '0.0';
+        wd = '0.0';
+        pw = '0.0';
+        vis = '0.0';
+        cl = '0.0';
+        return;
+      }
+
+      double wsBuff = windData['wind']['speed'] is int
+          ? (windData['wind']['speed'] as int).toDouble()
+          : windData['wind']['speed'];
+      ws = wsBuff.toString();
+
+      int wdBuff = windData['wind']['deg'];
+      wd = wdBuff.toString();
+
+      pw = windData['weather'][0]['description'].toString();
+
+      int visBuff = windData['visibility'];
+      vis = visBuff.toString();
+
+      int clBuff = windData['clouds']['all'];
+      cl = clBuff.toString();
     });
   }
 
@@ -136,45 +148,53 @@ class _ShowScreenState extends State<ShowScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Row(
-              //   children: [
-              //     buildPad(
-              //         color: Colors.blueGrey[100],
-              //         preFix: 'Wd',
-              //         unit: '°',
-              //         weatherValue: wd),
-              //     buildPad(
-              //         color: Colors.blueGrey[100],
-              //         preFix: 'Ws',
-              //         unit: 'KT',
-              //         weatherValue: ws),
-              //   ],
-              // ),
-              // buildPad(
-              //     color: Colors.blueGrey[100],
-              //     preFix: 'PW',
-              //     unit: '',
-              //     weatherValue: pw),
-              // buildPad(
-              //     color: Colors.blueGrey[100],
-              //     preFix: 'Vis',
-              //     unit: 'm',
-              //     weatherValue: vis),
-              // buildPad(
-              //     color: Colors.blueGrey[100],
-              //     preFix: 'Clouds',
-              //     unit: '%',
-              //     weatherValue: cl),
+              // debug
+              Row(
+                children: [
+                  buildPad(
+                      color: Colors.blueGrey[100],
+                      preFix: 'Wd',
+                      unit: '°',
+                      weatherValue: wd),
+                  buildPad(
+                      color: Colors.blueGrey[100],
+                      preFix: 'Ws',
+                      unit: 'KT',
+                      weatherValue: ws),
+                ],
+              ),
               buildPad(
                   color: Colors.blueGrey[100],
-                  preFix: 'T',
-                  unit: '°C',
-                  weatherValue: t),
+                  preFix: 'PW',
+                  unit: '',
+                  weatherValue: pw),
+
               buildPad(
                   color: Colors.blueGrey[100],
-                  preFix: 'Td',
-                  unit: '°C',
-                  weatherValue: td),
+                  preFix: 'Vis',
+                  unit: 'm',
+                  weatherValue: vis),
+              buildPad(
+                  color: Colors.blueGrey[100],
+                  preFix: 'Cloud',
+                  unit: '%',
+                  weatherValue: cl),
+
+              Row(
+                children: [
+                  buildPad(
+                      color: Colors.blueGrey[100],
+                      preFix: 'T',
+                      unit: '°C',
+                      weatherValue: t),
+                  buildPad(
+                      color: Colors.blueGrey[100],
+                      preFix: 'Td',
+                      unit: '°C',
+                      weatherValue: td),
+                ],
+              ),
+
               buildPad(
                   color: Colors.blueGrey[100],
                   preFix: 'H',
@@ -185,16 +205,22 @@ class _ShowScreenState extends State<ShowScreen> {
                   preFix: 'QNH',
                   unit: 'hPa',
                   weatherValue: qnh),
-              buildPad(
-                  color: Colors.blueGrey[100],
-                  preFix: 'QFE',
-                  unit: 'hPa',
-                  weatherValue: qfe),
-              buildPad(
-                  color: Colors.blueGrey[100],
-                  preFix: 'QFE \'',
-                  unit: 'inHg',
-                  weatherValue: qfeIn),
+
+              Row(
+                children: [
+                  buildPad(
+                      color: Colors.blueGrey[100],
+                      preFix: 'qfe',
+                      unit: 'hPa',
+                      weatherValue: qfe),
+                  buildPad(
+                      color: Colors.blueGrey[100],
+                      preFix: 'qfe\'',
+                      unit: 'inHg',
+                      weatherValue: qfeIn),
+                ],
+              ),
+
               Row(
                 children: [
                   buildPad(
