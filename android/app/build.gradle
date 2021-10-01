@@ -46,8 +46,8 @@ android {
         applicationId "com.vtse_obs"
         minSdkVersion 17
         targetSdkVersion 30
-        versionCode 15
-        versionName '2.0.5'
+        versionCode 18
+        versionName '2.0.8'
     }
 
 

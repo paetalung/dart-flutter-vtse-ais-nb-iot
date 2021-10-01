@@ -163,17 +163,18 @@ class _ShowScreenState extends State<ShowScreen> {
                       weatherValue: ws),
                 ],
               ),
-              buildPad(
-                  color: Colors.blueGrey[100],
-                  preFix: 'PW',
-                  unit: '',
-                  weatherValue: pw),
 
               buildPad(
                   color: Colors.blueGrey[100],
                   preFix: 'Vis',
                   unit: 'm',
                   weatherValue: vis),
+
+              buildPad(
+                  color: Colors.blueGrey[100],
+                  preFix: 'PW',
+                  unit: '',
+                  weatherValue: pw),
               buildPad(
                   color: Colors.blueGrey[100],
                   preFix: 'Cloud',
