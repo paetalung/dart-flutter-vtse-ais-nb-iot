@@ -28,6 +28,7 @@ class _ShowScreenState extends State<ShowScreen> {
   var pw;
   var vis;
   var cl;
+  var hw;
 
   @override
   void initState() {
@@ -54,10 +55,12 @@ class _ShowScreenState extends State<ShowScreen> {
       double tBuff = weatherData['Sensor']['t'] is int
           ? (weatherData['Sensor']['t'] as int).toDouble()
           : weatherData['Sensor']['t'];
+      double tCal = tBuff;
       t = tBuff.toString();
       double tdBuff = weatherData['Sensor']['dp'] is int
           ? (weatherData['Sensor']['dp'] as int).toDouble()
           : weatherData['Sensor']['dp'];
+
       td = tdBuff.toString();
       double hBuff = weatherData['Sensor']['h'] is int
           ? (weatherData['Sensor']['h'] as int).toDouble()
@@ -66,6 +69,7 @@ class _ShowScreenState extends State<ShowScreen> {
       double qnhBuff = weatherData['Sensor']['QNH'] is int
           ? (weatherData['Sensor']['QNH'] as int).toDouble()
           : weatherData['Sensor']['QNH'];
+
       qnh = qnhBuff.toString();
       double qfeBuff = weatherData['Sensor']['QFE'] is int
           ? (weatherData['Sensor']['QFE'] as int).toDouble()
@@ -85,13 +89,14 @@ class _ShowScreenState extends State<ShowScreen> {
       b = bBuff.toString();
 
       // debug
-      //print(windData);
+      // print(windData);
       if (windData == null) {
         ws = '0.0';
         wd = '0.0';
         pw = '0.0';
         vis = '0.0';
         cl = '0.0';
+        hw = '0.0'; // INCASE of SENSOR BME280 BROKEN
         return;
       }
 
@@ -110,6 +115,19 @@ class _ShowScreenState extends State<ShowScreen> {
 
       int clBuff = windData['clouds']['all'];
       cl = clBuff.toString();
+
+      //-- INCASE OF SENSOR BME280 BROKEN
+      int hwBuff = windData['main']['humidity'];
+      double hwCal = hwBuff.toDouble();
+      if (hwCal == 100.0) {
+        // Check Humid = 100%
+        hwCal -= 0.01;
+      }
+      double tdCal = tCal - ((100 - hwCal) / 5);
+      td = tdCal.toString();
+      hw = hwBuff.toString();
+      h = hw;
+      //-- INCASE OF SENSOR BME280 BROKEN
     });
   }
 
@@ -119,6 +137,7 @@ class _ShowScreenState extends State<ShowScreen> {
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: FlatButton(
+          //FlatButton
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
               side: BorderSide(color: Colors.blueGrey[300])),

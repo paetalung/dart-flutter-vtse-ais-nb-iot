@@ -5,8 +5,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'networking.dart';
 import 'show_screen.dart';
 
-const MagellanURL = 'xxx';
-const OpenWeatherMapURL = 'xxx';
+const MagellanURL = 'https://www.api.com';
+const OpenWeatherMapURL = 'https://www.api.com';
 
 class LoadingScreen extends StatefulWidget {
   @override

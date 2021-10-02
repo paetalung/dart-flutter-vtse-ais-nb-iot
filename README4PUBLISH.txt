@@ -8,7 +8,13 @@ D:\AppDev-Flutter\03-app\vtse_obs\android\app\Users\key
 3. Follow this document.
 https://flutter.dev/docs/deployment/android
 
-4. in File "build.gradle" in Flutter Project 
+4.0  in File "build.gradle" Please comment  
+     "signingConfigs.debug"  as same as this
+
+            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.debug
+
+4.1 in File "build.gradle" in Flutter Project 
    We have to **increase these 2 Variable** for
    Update new Version of our APP
 
@@ -43,7 +49,7 @@ https://flutter.dev/docs/deployment/android
 const MagellanURL =
     'https://magellan.ais.co.th/pullmessageapis/api/listen/thing/72B247A1EC3563F41338715A37BA4321';
 const OpenWeatherMapURL =
-    'https://api.openweathermap.org/data/2.5/weather?lat=10.715056&lon=99.359889&appid=e1b02b6dacf04857637967f73c961101';
+    'https://api.openweathermap.org/data/2.5/weather?lat=10.7091&lon=99.3182&appid=e1b02b6dacf04857637967f73c961101';
 
 -------------
 
