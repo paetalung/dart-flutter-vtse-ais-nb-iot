@@ -4,7 +4,7 @@ description: PresentWeatherAtVTSE
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 2.1.5
+version: 3.0.0
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

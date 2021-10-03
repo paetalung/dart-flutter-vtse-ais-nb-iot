@@ -124,8 +124,8 @@ class _ShowScreenState extends State<ShowScreen> {
         hwCal -= 0.01;
       }
       double tdCal = tCal - ((100 - hwCal) / 5);
-      td = tdCal.toString();
-      hw = hwBuff.toString();
+      td = tdCal.toStringAsFixed(2);
+      hw = hwBuff.toStringAsFixed(0);
       h = hw;
       //-- INCASE OF SENSOR BME280 BROKEN
     });
@@ -135,23 +135,58 @@ class _ShowScreenState extends State<ShowScreen> {
       {Color color, String preFix, String unit, String weatherValue}) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: FlatButton(
-          //FlatButton
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
-              side: BorderSide(color: Colors.blueGrey[300])),
-          color: color,
-          padding: EdgeInsets.all(2.0),
+        padding: const EdgeInsets.all(6.0),
+        child: TextButton(
+          style: ButtonStyle(
+              side: MaterialStateProperty.all(
+                  BorderSide(width: 2, color: Colors.white70)),
+              foregroundColor: MaterialStateProperty.all(Colors.white70),
+              padding: MaterialStateProperty.all(
+                  //EdgeInsets.symmetric(vertical: 20, horizontal: 10)),
+                  EdgeInsets.all(2.0)),
+              textStyle: MaterialStateProperty.all(TextStyle(fontSize: 16))),
           onPressed: () {
             Navigator.pushNamed(context, '/first');
           },
-          child: Text('$preFix : $weatherValue $unit',
-              style: TextStyle(fontSize: 16)),
+          child: Text(
+            '$preFix : $weatherValue $unit',
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          ),
         ),
       ),
     );
   }
+
+/*  Padding(
+  padding: const EdgeInsets.all(5.0),
+  child: TextButton(
+  style: ButtonStyle(
+  side: MaterialStateProperty.all(
+  BorderSide(width: 2, color: Colors.blue)),
+  foregroundColor: MaterialStateProperty.all(Colors.blue[600]),
+  padding: MaterialStateProperty.all(
+  //EdgeInsets.symmetric(vertical: 20, horizontal: 10)),
+  EdgeInsets.all(2.0)),
+  textStyle: MaterialStateProperty.all(TextStyle(fontSize: 16))),
+  //FlatButton
+
+  */ /*shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+              side: BorderSide(color: Colors.blueGrey[300])),
+          color: color,
+          padding: EdgeInsets.all(2.0),
+           */ /*
+  onPressed: () {
+  Navigator.pushNamed(context, '/first');
+  },
+
+  child: Text(
+  '$preFix : $weatherValue $unit',
+  //style: TextStyle(fontSize: 16)
+  style: TextStyle(fontSize: 16, color: Colors.blueAccent),
+  ),
+  ),
+  ),*/
 
   @override
   Widget build(BuildContext context) {
